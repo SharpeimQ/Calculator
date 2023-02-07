@@ -1,30 +1,32 @@
 function Add(a, b) {
-    return a+b;
+    return +a + +b;
 }
 
 function Subtract(a, b) {
-    return a-b;
+    return +a - +b;
 }
 
 function Multiply(a, b) {
-    return a*b;
+    return +a * +b;
 }
 
 function Divide(a, b) {
-    return a/b;
+    return +a / +b;
 }
 
-function operate(first, second, operator){
-    switch(operator === string){
+function operate(operator, a, b){
+    switch(operator){
     case ('+'):
-        Add(first, second)
-        break;
+        return Add(a, b);
     case ('-'):
-        Subtract(first, second)
+        return Subtract(a, b);
     case ('*'):
-        Multiply(first, second)
+        return Multiply(a, b);
     case ('/'):
-        Divide(first, second)
-    default: 
+        return Divide(a, b);
+    default:
+        console.log('oops');
     }
 }
+let sign = '-';
+console.log(operate(sign, 1, 2));
