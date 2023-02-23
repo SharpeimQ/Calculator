@@ -28,5 +28,3 @@ function operate(operator, a, b){
         console.log('oops');
     }
 }
-let sign = '-';
-console.log(operate(sign, 1, 2));
