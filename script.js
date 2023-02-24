@@ -15,12 +15,14 @@ const multiply = document.querySelector('.multiply');
 const divide = document.querySelector('.divide');
 const display = document.querySelector('.display-hold');
 const equal = document.querySelector('.equal');
+const container = document.querySelector('.container');
 
 let stored = '0';
 let operator = '';
 let temp = '';
 let temp1 = '';
 let temp2 = '';
+
 
 function Add(a, b) {
     return +a + +b;
@@ -35,7 +37,6 @@ function Multiply(a, b) {
 }
 
 function Divide(a, b) {
-    //b = b.slice(0, b.length);
     return +a / +b;
 }
 

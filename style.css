@@ -47,6 +47,17 @@ body {
     background: #0d6f96; 
 }
 
+/* .container:active {
+    transform: translateY(20px);
+    box-shadow: 0 20px #0d6f96;
+    transition-duration: 1000ms;
+}
+
+.container .display:active {
+    padding: 15px 5px 0 5px;
+    transition-duration: 1000ms;
+} */
+
 .display-hold {
     display: flex;
     border-top-right-radius: 12px;
@@ -92,9 +103,11 @@ button {
 
 .inner:hover {
     filter: brightness(95%);
+    transition-duration: 500ms;
 }
 
 .inner:active {
     transform: translateY(-2px);
     filter: brightness(90%);
+    transition-duration: 300ms;
 }
