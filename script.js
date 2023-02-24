@@ -25,9 +25,11 @@ let stored = '0';
 let operator = '';
 let temp = '';
 let temp1 = '';
-let temp2 = '';
 let backTemp = '';
 let signTemp = '';
+let calc = '';
+let calcTemp = '';
+let expo = '';
 
 function update() {
     display.innerHTML = stored;
@@ -47,20 +49,52 @@ function Divide(a, b) {
 function Exponent(a, b){
     return Math.pow(a,b);
 }
+function expRound(){
+    calc = +calc;
+    calcTemp = calc.toExponential(10);
+    calc = calcTemp.toString().substring(0,8);
+    expo = calcTemp.toString().substring(calcTemp.length - 4, calcTemp.length - 0);
+    return calc+expo;
+}
 function operate(operator, a, b){
     switch(operator){
     case ('+'):
-        return Add(a, b);
+        calc = Add(a,b).toString();
+        if (calc.length > 11) {
+            return expRound();
+        };
+        return Add(a,b);
+        
     case ('-'):
+        calc = Subtract(a,b).toString();
+        if (calc.length > 11) {
+            return expRound();
+        };
         return Subtract(a, b);
+
     case ('*'):
+        calc = Multiply(a,b).toString();
+        if (calc.length > 11) {
+            return expRound;
+        };
         return Multiply(a, b);
+
     case ('/'):
+        calc = Divide(a,b).toString();
+        if (calc.length > 11) {
+            return expRound();
+        };
         return Divide(a, b);
+
     case ('^'):
+        calc = Exponent(a,b).toString();
+        if (calc.length > 11) {
+            return expRound()
+        };
         return Exponent(a, b);
+
     default:
-        update();
+        break;
     }
 }
 //Calc Functions
@@ -238,10 +272,9 @@ function division(){
 }
 function operation(){
     temp1 = stored;
-    temp2 = temp1.replace('+', "").replace('-',"")
+    temp1 = temp1.replace('+', "").replace('-',"")
                                 .replace('*',"").replace("/","")
                                 .replace('^', "");
-    temp1 = temp2;
     stored = operate(operator, temp, temp1);
     temp = '';
     temp1 = '';
@@ -249,6 +282,10 @@ function operation(){
     return stored;
 }
 function backspace(){
+    if (stored === "+" || stored === "-" || stored === "*"
+    || stored === "/" || stored === "^") {
+        return stored;
+    }
     backTemp = stored.slice(0, stored.length - 1);
     stored = backTemp;
     if (stored === '') {
