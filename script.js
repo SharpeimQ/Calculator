@@ -27,19 +27,15 @@ let temp2 = '';
 function Add(a, b) {
     return +a + +b;
 }
-
 function Subtract(a, b) {
     return +a - +b;
 }
-
 function Multiply(a, b) {
     return +a * +b;
 }
-
 function Divide(a, b) {
     return +a / +b;
 }
-
 function operate(operator, a, b){
     switch(operator){
     case ('+'):
@@ -54,15 +50,13 @@ function operate(operator, a, b){
         display.innerHTML = stored;
     }
 }
-
 function update() {
     display.innerHTML = stored;
 }
 
 update();
-
-//Numbers
-one.addEventListener('click', () => {
+//Calc Functions
+function yi(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -75,9 +69,8 @@ one.addEventListener('click', () => {
     stored = stored + '1';
     update();
     return stored;
-});
-
-two.addEventListener('click', () => {
+}
+function er(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -90,9 +83,8 @@ two.addEventListener('click', () => {
     stored = stored + '2';
     update();
     return stored;
-});
-
-three.addEventListener('click', () => {
+}
+function san(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -105,9 +97,8 @@ three.addEventListener('click', () => {
     stored = stored + '3';
     update();
     return stored;
-});
-
-four.addEventListener('click', () => {
+}
+function si(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -120,9 +111,8 @@ four.addEventListener('click', () => {
     stored = stored + '4';
     update();
     return stored;
-});
-
-five.addEventListener('click', () => {
+}
+function wu(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -135,9 +125,8 @@ five.addEventListener('click', () => {
     stored = stored + '5';
     update();
     return stored;
-});
-
-six.addEventListener('click', () => {
+}
+function liu(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -150,9 +139,8 @@ six.addEventListener('click', () => {
     stored = stored + '6';
     update();
     return stored;
-});
-
-seven.addEventListener('click', () => {
+}
+function qi(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -165,9 +153,8 @@ seven.addEventListener('click', () => {
     stored = stored + '7';
     update();
     return stored;
-});
-
-eight.addEventListener('click', () => {
+}
+function ba(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -180,9 +167,8 @@ eight.addEventListener('click', () => {
     stored = stored + '8';
     update();
     return stored;
-});
-
-nine.addEventListener('click', () => {
+}
+function jiu(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -195,9 +181,8 @@ nine.addEventListener('click', () => {
     stored = stored + '9';
     update();
     return stored;
-});
-
-zero.addEventListener('click', () => {
+}
+function ling(){
     if (stored.length >= 11) {
         update();
         return stored;
@@ -209,49 +194,41 @@ zero.addEventListener('click', () => {
     stored = stored + '0';
     update();
     return stored;
-});
-
-//Operations
-clear.addEventListener('click', () => {
+}
+function wipe(){
     stored = '0';
     update();
     return stored;
-})
-
-plus.addEventListener('click', () => {
+}
+function addition(){
     temp = stored;
     operator = "+";
     stored = "+";
     update();
     return temp;
-})
-
-subtract.addEventListener('click', () => {
+}
+function minus(){
     temp = stored;
     operator = "-";
     stored = "-";
     update();
     return temp;
-})
-
-
-multiply.addEventListener('click', () => {
+}
+function times(){
     temp = stored;
     operator = "*";
     stored = "*";
     update();
     return temp;
-})
-
-divide.addEventListener('click', () => {
+}
+function division(){
     temp = stored;
     operator = "/";
     stored = "/";
     update();
     return temp;
-})
-
-equal.addEventListener('click', () => {
+}
+function operation(){
     temp1 = stored;
     temp2 = temp1.replace('+', "").replace('-',"")
                                 .replace('*',"").replace("/","");
@@ -261,4 +238,78 @@ equal.addEventListener('click', () => {
     temp1 = '';
     update();
     return stored;
+}
+
+//Click Events
+one.addEventListener('click', () => {
+    yi();
 });
+two.addEventListener('click', () => {
+    er();
+});
+three.addEventListener('click', () => {
+    san();
+});
+four.addEventListener('click', () => {
+    si();
+});
+five.addEventListener('click', () => {
+    wu();
+});
+six.addEventListener('click', () => {
+    liu();
+});
+seven.addEventListener('click', () => {
+    qi();
+});
+eight.addEventListener('click', () => {
+    ba();
+});
+nine.addEventListener('click', () => {
+    jiu();
+});
+zero.addEventListener('click', () => {
+    ling();
+});
+clear.addEventListener('click', () => {
+    wipe();
+})
+plus.addEventListener('click', () => {
+    addition();
+})
+subtract.addEventListener('click', () => {
+    minus();
+})
+multiply.addEventListener('click', () => {
+    times();
+})
+divide.addEventListener('click', () => {
+    division();
+})
+equal.addEventListener('click', () => {
+    operation();
+});
+
+//Keyboard Event
+document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+        case('1'): yi(); break;
+        case('2'): er(); break;
+        case('3'): san(); break;
+        case('4'): si(); break;
+        case('5'): wu(); break;
+        case('6'): liu(); break;
+        case('7'): qi(); break;
+        case('8'): ba(); break;
+        case('9'): jiu(); break;
+        case('0'): ling(); break;
+        case('c'): wipe(); break;
+        case('C'): wipe(); break;
+        case('+'): addition(); break;
+        case('-'): minus(); break;
+        case('*'): times(); break;
+        case('/'): division(); break;
+        case('='): operation(); break;
+        case('Enter'): operation(); break;
+    }
+})
