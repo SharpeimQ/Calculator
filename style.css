@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Londrina+Sketch&family=Open+Sans&display=swap');
 
+* {
+    font-family: 'Happy Monkey', cursive;
+}
+
 body {
     background: white;  
     display: flex;
@@ -8,11 +12,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Happy Monkey', cursive;
 }
 
 .container {
-    margin-top: 100px;
+    margin-top: 10px;
     height: 700px;
     width: 600px;
     display: flex;
@@ -110,4 +113,11 @@ button {
     transform: translateY(-2px);
     filter: brightness(90%);
     transition-duration: 150ms;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    font-weight: 900;
+    color: #18bcfd;
 }

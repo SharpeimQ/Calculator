@@ -64,7 +64,7 @@ function operate(operator, a, b){
             return expRound();
         };
         return Add(a,b);
-        
+
     case ('-'):
         calc = Subtract(a,b).toString();
         if (calc.length > 11) {
@@ -75,7 +75,7 @@ function operate(operator, a, b){
     case ('*'):
         calc = Multiply(a,b).toString();
         if (calc.length > 11) {
-            return expRound;
+            return expRound();
         };
         return Multiply(a, b);
 
