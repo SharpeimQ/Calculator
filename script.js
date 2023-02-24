@@ -44,6 +44,9 @@ function Multiply(a, b) {
     return +a * +b;
 }
 function Divide(a, b) {
+    if (b === '0') {
+        return 'ha ha ha ha';
+    }
     return +a / +b;
 }
 function Exponent(a, b){
@@ -239,6 +242,8 @@ function ling(){
 }
 function wipe(){
     stored = '0';
+    temp = '';
+    temp1 = '';
     update();
     return stored;
 }
@@ -311,7 +316,8 @@ function Decimal(){
         return stored;
 }}
 function signChange(){
-if (stored === '0') {
+if (stored === '0' || stored === "+" || stored === "-" || stored === "*"
+    || stored === "/" || stored === "^") {
     return stored;
 }
 if (stored.includes("-")) {
