@@ -103,11 +103,11 @@ button {
 
 .inner:hover {
     filter: brightness(95%);
-    transition-duration: 500ms;
+    transition-duration: 200ms;
 }
 
 .inner:active {
     transform: translateY(-2px);
     filter: brightness(90%);
-    transition-duration: 300ms;
+    transition-duration: 150ms;
 }

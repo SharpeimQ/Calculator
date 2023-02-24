@@ -16,14 +16,22 @@ const divide = document.querySelector('.divide');
 const display = document.querySelector('.display-hold');
 const equal = document.querySelector('.equal');
 const container = document.querySelector('.container');
+const del = document.querySelector('.del');
+const exp = document.querySelector('.exp');
+const decimal = document.querySelector('.decimal');
+const swap = document.querySelector('.swap');
 
 let stored = '0';
 let operator = '';
 let temp = '';
 let temp1 = '';
 let temp2 = '';
+let backTemp = '';
+let signTemp = '';
 
-
+function update() {
+    display.innerHTML = stored;
+}
 function Add(a, b) {
     return +a + +b;
 }
@@ -36,6 +44,9 @@ function Multiply(a, b) {
 function Divide(a, b) {
     return +a / +b;
 }
+function Exponent(a, b){
+    return Math.pow(a,b);
+}
 function operate(operator, a, b){
     switch(operator){
     case ('+'):
@@ -46,15 +57,12 @@ function operate(operator, a, b){
         return Multiply(a, b);
     case ('/'):
         return Divide(a, b);
+    case ('^'):
+        return Exponent(a, b);
     default:
-        display.innerHTML = stored;
+        update();
     }
 }
-function update() {
-    display.innerHTML = stored;
-}
-
-update();
 //Calc Functions
 function yi(){
     if (stored.length >= 11) {
@@ -231,13 +239,55 @@ function division(){
 function operation(){
     temp1 = stored;
     temp2 = temp1.replace('+', "").replace('-',"")
-                                .replace('*',"").replace("/","");
+                                .replace('*',"").replace("/","")
+                                .replace('^', "");
     temp1 = temp2;
     stored = operate(operator, temp, temp1);
     temp = '';
     temp1 = '';
     update();
     return stored;
+}
+function backspace(){
+    backTemp = stored.slice(0, stored.length - 1);
+    stored = backTemp;
+    if (stored === '') {
+        stored = "0";
+    }
+    update();
+    return stored;
+}
+function Exponential(){
+    temp = stored;
+    operator = "^";
+    stored = "^";
+    update();
+    return temp;
+}
+function Decimal(){
+    if (stored.includes(".")) {
+        update();
+        return stored;
+    } else {
+        stored = stored + ".";
+        update();
+        return stored;
+}}
+function signChange(){
+if (stored === '0') {
+    return stored;
+}
+if (stored.includes("-")) {
+        signTemp = stored.replace("-", "");
+        stored = signTemp;
+        update();
+        return stored;
+    }else {
+        signTemp = "-" + stored;
+        stored = signTemp;
+        update();
+        return stored;
+    }
 }
 
 //Click Events
@@ -289,9 +339,22 @@ divide.addEventListener('click', () => {
 equal.addEventListener('click', () => {
     operation();
 });
+del.addEventListener('click', () => {
+    backspace();
+})
+exp.addEventListener('click', () => {
+    Exponential();
+})
+decimal.addEventListener('click', () => {
+    Decimal();
+})
+swap.addEventListener('click', () => {
+    signChange();
+})
 
-//Keyboard Event
+//Keyboard Events
 document.addEventListener('keydown', (e) => {
+    console.log(e.key);
     switch(e.key) {
         case('1'): yi(); break;
         case('2'): er(); break;
@@ -311,5 +374,8 @@ document.addEventListener('keydown', (e) => {
         case('/'): division(); break;
         case('='): operation(); break;
         case('Enter'): operation(); break;
+        case('Backspace'): backspace(); break;
+        case('^'): Exponential(); break;
+        case('.'): Decimal(); break;
     }
 })
